@@ -13,6 +13,6 @@ bool MyStack::isEmpty() {
     return adapter_objekt->isEmpty();
 }
 
-std::vector<int> MyStack::printStack() {
-    return adapter_objekt->printList();
+std::vector<int> MyStack::stackToVec() {
+    return adapter_objekt->listToVec();
 }

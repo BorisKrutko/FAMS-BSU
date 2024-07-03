@@ -32,7 +32,7 @@ void MainWindow::on_pushButton_pop_clicked()
 
 void MainWindow::on_pushButton_print_clicked()
 {
-    vec_stack_el = objekt->printStack();
+    vec_stack_el = objekt->stackToVec();
     update();
 }
 

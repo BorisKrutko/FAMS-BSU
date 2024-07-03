@@ -4,7 +4,7 @@
 #include "mylist.h"
 
 
-class MyStack: public MyList{
+class MyStack: private MyList{
 private:
     MyList* adapter_objekt;
 public:
@@ -12,6 +12,6 @@ public:
     void popFirst();
     void pushFistt(int data);
     bool isEmpty();
-    std::vector<int> printStack();
+    std::vector<int> stackToVec();
 };
 #endif // MYSTACK_H

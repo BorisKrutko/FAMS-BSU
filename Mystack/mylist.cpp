@@ -13,7 +13,7 @@ void MyList::insertNode(int data) {
     }
 }
 
-std::vector<int> MyList::printList() {
+std::vector<int> MyList::listToVec() {
     std::vector<int> res_vec;
     Node* temp = head;
     std::cout << "print: ";
