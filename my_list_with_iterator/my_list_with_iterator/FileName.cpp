@@ -9,10 +9,10 @@ int main() {
 	l_ist.insertNode(10);
 	ListIterator temp = ListIterator(&l_ist);
 	temp.Next();
-	std::cout << temp.CurrentItem();
+	std::cout << temp.CurrentItem() << std::endl;
 	temp.First();
-	std::cout << temp.CurrentItem();
+	std::cout << temp.CurrentItem() << std::endl;;
 	l_ist.deleteEl();
-	std::cout << temp.CurrentItem();
+	std::cout << temp.CurrentItem() << std::endl;;
 	return 0;
 }

@@ -14,8 +14,11 @@ private:
     Node* head;
 public:
     MyList() : head(nullptr) {};
+    ~MyList() {
+        while (!this->isEmpty()) this->deleteEl();
+    }
     void insertNode(int data);
-    std::vector<int> printList();
+    std::vector<int> listTovec();
     bool isEmpty();
     void deleteEl();
     int Count();
