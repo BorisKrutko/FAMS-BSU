@@ -27,6 +27,7 @@ public class Matrix {
         
     }
 
+    
     public static double[][] getMatrix(Scanner scanner, int size) {
         double[][] res_matrix = new double[size][size];
         for (int i = 0; i < size; i++) {
@@ -41,6 +42,7 @@ public class Matrix {
         }
         return res_matrix;
     }
+
 
     public static double[][] calculateInverseMatrix(double[][] matrix, int size) {
         double[][] res_matrix = new double[size][size];
@@ -117,4 +119,3 @@ public class Matrix {
         }
     }
 }
-
