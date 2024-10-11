@@ -66,6 +66,7 @@ public class MyFrame extends JFrame {
 
         // Создаем кнопку для печати прогрессии
         JButton printButton = new JButton("print");
+        JEditorPane printSeries = new JEditorPane();   
         printButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -77,8 +78,7 @@ public class MyFrame extends JFrame {
                     Exponential myExp = new Exponential(Double.parseDouble(textFieldFirstEl.getText()), Double.parseDouble(textFieldStep.getText()));
                     resSeries = myExp.toString(Integer.parseInt(textFieldN.getText()));
                 }
-                // Создаем JEditorPane и добавляем его на панель
-                JEditorPane printSeries = new JEditorPane();    
+                // Создаем JEditorPane и добавляем его на панель 
                 printSeries.setContentType("text/html");    
                 printSeries.setText("<h1>  Result:</h1>  " + resSeries);  
                 printSeries.setBounds(0, 200, 500, 250);
@@ -93,6 +93,7 @@ public class MyFrame extends JFrame {
 
         // Создаем кнопку для сохранения прогрессии
         JButton saveToFileButton = new JButton("save");
+        JEditorPane isDone = new JEditorPane();
         saveToFileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -103,8 +104,7 @@ public class MyFrame extends JFrame {
                     Exponential myExp = new Exponential(Double.parseDouble(textFieldFirstEl.getText()), Double.parseDouble(textFieldStep.getText()));
                     myExp.saveToFile(myExp.toString(Integer.parseInt(textFieldN.getText())), Integer.parseInt(textFieldN.getText()));
                 }
-                // Создаем JEditorPane и добавляем его на панель
-                JEditorPane isDone = new JEditorPane();    
+                // Создаем JEditorPane и добавляем его на панель    
                 isDone.setContentType("text/html");    
                 isDone.setText("<h1>done</h1>");  
                 isDone.setBounds(0, 530, 500, 50);
