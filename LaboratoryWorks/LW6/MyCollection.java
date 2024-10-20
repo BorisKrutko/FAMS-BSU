@@ -26,15 +26,16 @@ public class MyCollection{
         } catch(Exception e) {System.out.println("file not found");}
     }
 
-    public String mapToString() {
-        StringBuilder resStr = new StringBuilder();
-        this.sortedCollectioStudents.forEach((key, value) -> {
-            resStr.append(" idNumber: ").append(value.getIdNumber()).append("; ")
-                  .append(" surname: ").append(value.getSurname()).append("; ")
-                  .append(" groupNumber: ").append(value.getGroupNumber()).append("; ")
-                  .append(" courseNumber: ").append(value.getCourseNumber()).append("\n");
+    public String mapToStringAtRate(int rate) {
+        StringBuilder resStrBuilder = new StringBuilder();
+        this.sortedCollectioStudents.entrySet().stream().filter(entry -> entry.getValue().getCourseNumber() == rate)
+        .forEach(entry -> {
+            resStrBuilder.append(" idNumber: ").append(entry.getValue().getIdNumber()).append("; ")
+                  .append(" surname: ").append(entry.getValue().getSurname()).append("; ")
+                  .append(" groupNumber: ").append(entry.getValue().getGroupNumber()).append("; ")
+                  .append(" courseNumber: ").append(entry.getValue().getCourseNumber()).append("\n");
         });
-        return resStr.toString();
+        return resStrBuilder.toString();
     }
 
     public String listToString() {

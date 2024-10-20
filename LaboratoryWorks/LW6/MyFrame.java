@@ -14,7 +14,8 @@ public class MyFrame extends JFrame {
         setTitle("LW6");
         setSize(1000, 500);
         JPanel panelToAddSt = new JPanel();
-        JPanel panelToLabels = new JPanel(); 
+        JPanel panelToLabels = new JPanel();
+        JPanel panelToSort = new JPanel(); 
 
         JLabel input = new JLabel();
         input.setBackground(Color.YELLOW);
@@ -24,11 +25,15 @@ public class MyFrame extends JFrame {
         output.setBackground(Color.YELLOW);
         output.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
 
+        JTextField coursToSort = new JTextField();
+        input.setBackground(Color.YELLOW);
+        input.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+
         JButton sort = new JButton("Sort");
         sort.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent a) {
-                output.setText("<html><p style='margin-left: 20px;'>" + MyFrame.this.studentCollection.mapToString().replace("\n", "<br>") + "</html>");
+                output.setText("<html><p style='margin-left: 20px;'>" + MyFrame.this.studentCollection.mapToStringAtRate(Integer.parseInt(coursToSort.getText())).replace("\n", "<br>") + "</html>");
             }
         });
 
@@ -78,7 +83,11 @@ public class MyFrame extends JFrame {
         panelToLabels.add(output);
         panelToLabels.setLayout(new GridLayout(1, 2));
 
-        add(sort, BorderLayout.SOUTH);
+        panelToSort.add(sort);
+        panelToSort.add(coursToSort);
+        panelToSort.setLayout(new GridLayout(1, 2));
+
+        add(panelToSort, BorderLayout.SOUTH);
         add(panelToAddSt, BorderLayout.NORTH);
         add(openFile, BorderLayout.WEST);
         add(panelToLabels, BorderLayout.CENTER); 
