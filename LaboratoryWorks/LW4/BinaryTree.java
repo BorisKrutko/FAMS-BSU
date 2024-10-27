@@ -1,23 +1,32 @@
 package LW4;
 
-public class BinaryTree<T extends Comparable<T>> {
+import java.util.Comparator;
+
+public class BinaryTree<T> {
     public static void main(String[] args) {
-        BinaryTree<Integer> temp = new BinaryTree<>(12);
-        temp.push(11);
-        temp.push(10);
-        temp.push(2);
-        temp.push(30);
-        System.err.println("\nLRN:");
-        temp.bypassLRN();
-        System.err.println("\nLRN:");
-        temp.delete(12);
-        temp.bypassLRN();
-        System.err.println("\nNLR:");
-        temp.delete(30);
-        temp.bypassNLR();
-        System.err.println("\nLNR:");
-        temp.delete(10);
-        temp.bypassLNR();
+        // BinaryTree<Integer> temp = new BinaryTree<>(12);
+        // temp.push(11);
+        // temp.push(10);
+        // temp.push(2);
+        // temp.push(30);
+        // System.err.println("\nLRN:");
+        // temp.bypassLRN();
+        // System.err.println("\nLRN:");
+        // temp.delete(12);
+        // temp.bypassLRN();
+        // System.err.println("\nNLR:");
+        // temp.delete(30);
+        // temp.bypassNLR();
+        // System.err.println("\nLNR:");
+        // temp.delete(10);
+        // temp.bypassLNR();
+        Comparator<String> comp = Comparator.naturalOrder();
+        BinaryTree<String> bst1 = new BinaryTree<>(comp);
+        bst1.push("a");
+        bst1.push("b");
+        bst1.push("c");
+        bst1.push("d");
+        bst1.bypassLNR();
     }
 
     class Node {
@@ -32,14 +41,16 @@ public class BinaryTree<T extends Comparable<T>> {
     }
 
     Node root; 
-    public BinaryTree(T value) {
-        root = new Node(value);
+    Comparator<T> comp;
+
+    public BinaryTree(Comparator<T> comp){
+        this.comp = comp;
     }
 
     public boolean find(T value) {
         Node current = root;
         while (current != null) {
-            int compare = value.compareTo(current.value);
+            int compare = comp.compare(value, current.value);
             if (compare == 0) {
                 return true;
             } else if (compare < 0) {
@@ -54,10 +65,10 @@ public class BinaryTree<T extends Comparable<T>> {
     private Node findParentNode(T value) { 
         Node current = root;
         while (current != null) {
-            int compare = value.compareTo(current.value);
-            if (current.left != null && value.compareTo(current.left.value) == 0) {
+            int compare = comp.compare(value, current.value);
+            if (current.left != null && comp.compare(value, current.left.value) == 0) {
                 return current;
-            } else if (current.right != null && value.compareTo(current.right.value) == 0) {
+            } else if (current.right != null && comp.compare(value, current.right.value) == 0) {
                 return current;
             } else if (compare < 0) {
                 current = current.left;
@@ -77,7 +88,7 @@ public class BinaryTree<T extends Comparable<T>> {
     }
     
     private void recursivePush(Node current, T value) {
-        int compare = value.compareTo(current.value);
+        int compare = comp.compare(value, current.value);
         if (compare > 0) {
             if (current.right == null) current.right = new Node(value); 
             else {
@@ -122,9 +133,9 @@ public class BinaryTree<T extends Comparable<T>> {
 
     private void recursiveBypassLNR(Node current){
         if (current != null) {
-            recursiveBypassLRN(current.left);
+            recursiveBypassLNR(current.left);
             System.err.print(current.value + " ");
-            recursiveBypassLRN(current.right);
+            recursiveBypassLNR(current.right);
         }
     }
 
@@ -139,14 +150,14 @@ public class BinaryTree<T extends Comparable<T>> {
         // new parentNodeToDelene and NodeToDelete
         Node parentNodeToDelete, nodeToDelete;
         // if root need to del
-        if (value.compareTo(root.value) == 0) {
+        if (comp.compare(value, root.value) == 0) {
             parentNodeToDelete = null;
             nodeToDelete = root;
         } else {
             parentNodeToDelete = findParentNode(value);
-            if (parentNodeToDelete.left != null && value.compareTo(parentNodeToDelete.left.value) == 0) {
+            if (parentNodeToDelete.left != null && comp.compare(value, parentNodeToDelete.left.value) == 0) {
                 nodeToDelete = parentNodeToDelete.left;
-            } else if (parentNodeToDelete.right != null && value.compareTo(parentNodeToDelete.right.value) == 0) {
+            } else if (parentNodeToDelete.right != null && comp.compare(value, parentNodeToDelete.right.value) == 0) {
                 nodeToDelete = parentNodeToDelete.right;
             } else {
                 return;
