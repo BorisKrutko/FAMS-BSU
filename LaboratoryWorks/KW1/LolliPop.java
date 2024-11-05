@@ -16,7 +16,7 @@ public class LolliPop extends Candy {
     public LolliPop(String[] args) {
         super(Double.parseDouble(args[1]), args[2], CandyColor.fromCode(args[3]), args[4], Double.parseDouble(args[5]));
         try {
-            if (args.length != 8) throw new IllegalArgumentException();  
+            if (args.length != 9) throw new IllegalArgumentException();  
             this.isSour = Boolean.parseBoolean(args[6]);
             this.lolliPopType = args[7];
             this.withStick = Boolean.parseBoolean(args[8]);
@@ -25,7 +25,7 @@ public class LolliPop extends Candy {
 
     @Override
     public String toString() {
-        return (super.toString() + "isSour: " + this.isSour 
-                + "lolliPopType: " + this.lolliPopType + "withStick: " + this.withStick);  
+        return (super.toString() + " isSour: " + this.isSour 
+                + " lolliPopType: " + this.lolliPopType + " withStick: " + this.withStick + "\n");  
     }
 }

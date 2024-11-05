@@ -49,7 +49,7 @@ public class Chocolate extends Candy {
 
     @Override
     public String toString() {
-        return (super.toString() + "typeChocolate: " + this.typeChocolate 
-                + "numberOfSlices: " + this.numberOfSlices + "withFillin: " + this.withFilling);  
+        return (super.toString() + " typeChocolate: " + this.typeChocolate 
+                + " numberOfSlices: " + this.numberOfSlices + " withFillin: " + this.withFilling + "\n");  
     }
 }

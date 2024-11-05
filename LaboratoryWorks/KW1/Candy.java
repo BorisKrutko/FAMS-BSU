@@ -1,9 +1,7 @@
 package KW1;
 
-import javax.imageio.plugins.tiff.TIFFTagSet;
-
 enum CandyColor {
-    Green("G"), Red("R"), Black("B"), Wight("W"), Blue("B");
+    Green("G"), Red("R"), Black("B"), Wight("W"), Blue("Bl");
 
     private String code;
 
@@ -48,8 +46,8 @@ public abstract class Candy {
 
     @Override
     public String toString() {
-        return ("waight: " + this.waight + "name: " + this.name + "color: " + this.color 
-                + "manufacturer: " + this.manufacturer + "SugarPercrntage: " + this.sugarPercentage);
+        return ("waight: " + this.waight + " name: " + this.name + " color: " + this.color 
+                + " manufacturer: " + this.manufacturer + " SugarPercrntage: " + this.sugarPercentage);
     }
 }
 
