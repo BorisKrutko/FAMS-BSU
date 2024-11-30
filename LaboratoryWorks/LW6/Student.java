@@ -40,5 +40,15 @@ public class Student {
     public int getCourseNumber(){
         return this.courseNumber;
     }
+
+    @Override
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(" idNumber: ").append(this.getIdNumber()).append("; ")
+                  .append(" surname: ").append(this.getSurname()).append("; ")
+                  .append(" groupNumber: ").append(this.getGroupNumber()).append("; ")
+                  .append(" courseNumber: ").append(this.getCourseNumber()).append("\n");
+        return stringBuffer.toString();
+    }
 }
 

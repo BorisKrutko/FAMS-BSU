@@ -26,14 +26,19 @@ public class MyCollection{
         } catch(Exception e) {System.out.println("file not found");}
     }
 
+    public String mapToString() {
+        StringBuilder resStrBuilder = new StringBuilder();
+        this.sortedCollectioStudents.entrySet().forEach(entry -> {
+            resStrBuilder.append(entry.toString());
+        });
+        return resStrBuilder.toString();
+    }
+
     public String mapToStringAtRate(int rate) {
         StringBuilder resStrBuilder = new StringBuilder();
         this.sortedCollectioStudents.entrySet().stream().filter(entry -> entry.getValue().getCourseNumber() == rate)
         .forEach(entry -> {
-            resStrBuilder.append(" idNumber: ").append(entry.getValue().getIdNumber()).append("; ")
-                  .append(" surname: ").append(entry.getValue().getSurname()).append("; ")
-                  .append(" groupNumber: ").append(entry.getValue().getGroupNumber()).append("; ")
-                  .append(" courseNumber: ").append(entry.getValue().getCourseNumber()).append("\n");
+            resStrBuilder.append(entry.toString());
         });
         return resStrBuilder.toString();
     }
@@ -41,10 +46,7 @@ public class MyCollection{
     public String listToString() {
         StringBuilder resStr = new StringBuilder();
         this.collectioStudents.forEach(value -> {
-            resStr.append(" idNumber: ").append(value.getIdNumber()).append("; ")
-                  .append(" surname: ").append(value.getSurname()).append("; ")
-                  .append(" groupNumber: ").append(value.getGroupNumber()).append("; ")
-                  .append(" courseNumber: ").append(value.getCourseNumber()).append("\n");
+            resStr.append(value.toString());
         });
         return resStr.toString();
     }
