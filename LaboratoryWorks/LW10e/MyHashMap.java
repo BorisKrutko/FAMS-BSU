@@ -8,6 +8,9 @@ class MyHashMap<K, V> {
     private int capacity;
     private int size;
 
+    public int getCapacity() { return this.capacity; }
+    public ArrayList<Pair<K, V>> getArrayList() { return this.arrayList; }
+
     public MyHashMap() {
         this.capacity = 13;
         this.arrayList = new ArrayList<>(17);
@@ -54,6 +57,7 @@ class MyHashMap<K, V> {
         }
         this.arrayList = newList;
     }
+    
 
     public void put(K key, V val) {
         if (size + 1 > 0.75 * this.capacity) resizeMyHashMap();

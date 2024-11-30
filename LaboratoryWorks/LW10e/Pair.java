@@ -18,6 +18,11 @@ class Pair<K, V> {
     }
 
     @Override
+    public String toString() {
+        return this.getKey() + " : " + this.getValue() + ", ";
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;

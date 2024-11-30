@@ -32,12 +32,21 @@ public class Main {
         System.out.println("Current map: " + map); 
 
         // Тестирование метода clear
-        map.clear();
-        System.out.println("Size after clear: " + map.size()); // 0
-        System.out.println("Is map empty? " + map.isEmpty()); // true
+        // map.clear();
+        // System.out.println("Size after clear: " + map.size()); // 0
+        // System.out.println("Is map empty? " + map.isEmpty()); // true
 
         // Добавление элементов после очистки
         map.put("five", 5);
         System.out.println("Value for 'five' after adding again: " + map.get("five")); // 5
+
+        // check it
+        MyIterator<String, Integer> it = new MyIterator<>(map);
+        System.out.println(it.currentItem());
+        it.next();
+        System.out.println(it.currentItem());
+        System.out.println(it.isDone());
+        it.first();
+        System.out.println(it.currentItem());
     }
 }
