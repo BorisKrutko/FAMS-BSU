@@ -8,6 +8,8 @@ class MyHashMap<K, V> {
     private int capacity;
     private int size;
 
+    public ArrayList<Pair<K, V>> getArrayList() { return this.arrayList; }
+
     public MyHashMap() {
         this.capacity = 13;
         this.arrayList = new ArrayList<>(17);
