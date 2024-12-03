@@ -1,6 +1,6 @@
-package LW12;
+package LW12.LW12p2.view;
 
-class Pair<K, V> {
+public class Pair<K, V> {
     private K key;
     private V value;
 

@@ -1,6 +1,6 @@
 package LW11p2;
 
-class StudentKey {
+public class StudentKey {
     private int groupNumber;
     private String surname;
 

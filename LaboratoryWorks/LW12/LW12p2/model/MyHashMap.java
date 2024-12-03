@@ -1,9 +1,10 @@
-package LW12;
+package LW12.LW12p2.model;
 
+import LW12.LW12p2.view.Pair;
 import java.math.BigInteger;
 import java.util.ArrayList;
 
-class MyHashMap<K, V> {
+public class MyHashMap<K, V> {
     private ArrayList<Pair<K, V>> arrayList;
     private int capacity;
     private int size;

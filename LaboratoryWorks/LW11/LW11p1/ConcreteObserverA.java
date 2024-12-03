@@ -1,4 +1,4 @@
-package LW11p;
+package LW11p1;
 
 import javax.swing.JLabel;
 

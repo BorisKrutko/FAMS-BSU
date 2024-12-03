@@ -1,14 +1,12 @@
-package LW12;
+package LW12.LW12p2.view;
 
-public class Point3D {
+public class Point2D {
     private final int x;
     private final int y;
-    private final int z;
 
-    public Point3D(int x, int y, int z) {
+    public Point2D(int x, int y) {
         this.x = x;
         this.y = y;
-        this.z = z;
     }
 
     public void accept(Visitor visitor) {
@@ -17,5 +15,4 @@ public class Point3D {
 
     public int getX() { return x; }
     public int getY() { return y; }
-    public int getZ() { return z; }
 }

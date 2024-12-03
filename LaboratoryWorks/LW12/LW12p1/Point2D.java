@@ -1,4 +1,4 @@
-package LW12;
+package LW12.LW12p1;
 
 public class Point2D {
     private final int x;
