@@ -2,10 +2,10 @@ package LW11p;
 
 import javax.swing.JLabel;
 
-public class LogKey implements Observer{
+public class ConcreteObserverA implements Observer {
     private JLabel label;
 
-    public LogKey(JLabel label) {
+    public ConcreteObserverA(JLabel label) {
         this.label = label;
     }
 

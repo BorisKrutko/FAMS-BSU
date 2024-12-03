@@ -8,10 +8,10 @@ import javax.swing.*;
 
 public class MyFrame extends JFrame {
     private File file;
-    private MyCollectionUtillSimle studentCollection;
+    private MyCollection studentCollection;
 
     public MyFrame() {
-        studentCollection = new MyCollectionUtillSimle();
+        studentCollection = new MyCollection();
         setTitle("LW6");
         setSize(1000, 500);
         setLayout(new BorderLayout());
@@ -43,6 +43,7 @@ public class MyFrame extends JFrame {
             public void actionPerformed(ActionEvent a) {
                 try {
                     int course = Integer.parseInt(courseToSort.getText());
+                    studentCollection.setSimpleMapToStringAtRate();
                     String sortedStudents = studentCollection.mapToStringAtRate(course);
                     outputLabel.setText("<html><p style='margin-left: 20px;'>" + sortedStudents.replace("\n", "<br>") + "</html>");
                 } catch (NumberFormatException e) {
@@ -61,6 +62,8 @@ public class MyFrame extends JFrame {
                     String[] args = inputText.split(" ");
                     if (args.length == 4) {
                         studentCollection.add(new Student(args));
+                        studentCollection.setSimpleListToString();
+                        studentCollection.setStreamMapToString();
                         inputLabel.setText("<html><p style='margin-left: 20px;'>" + studentCollection.listToString().replace("\n", "<br>") + "</html>");
                         outputLabel.setText("<html><p style='margin-left: 20px;'>" + studentCollection.mapToString().replace("\n", "<br>") + "</html>");
                     } else {
@@ -81,7 +84,8 @@ public class MyFrame extends JFrame {
                 int result = fileChooser.showOpenDialog(null);
                 if (result == JFileChooser.APPROVE_OPTION) {
                     file = fileChooser.getSelectedFile();
-                    studentCollection = new MyCollectionUtillSimle(file);
+                    studentCollection = new MyCollection(file);
+                    studentCollection.setStreamListToString();
                     inputLabel.setText("<html><p style='margin-left: 20px;'>" + studentCollection.listToString().replace("\n", "<br>") + "</html>");
                 }
             }

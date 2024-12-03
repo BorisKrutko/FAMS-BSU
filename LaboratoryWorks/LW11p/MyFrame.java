@@ -18,14 +18,14 @@ public class MyFrame extends JFrame {
         largDisplayJLabel.setHorizontalAlignment(SwingConstants.CENTER);
         JLabel logKeyJLabel = new JLabel("Лог нажатий: ");
 
-        LogKey logKey = new LogKey(logKeyJLabel);
-        LargeKeyDisplay largeKeyDisplay = new LargeKeyDisplay(largDisplayJLabel);
+        ConcreteObserverA logKey = new ConcreteObserverA(logKeyJLabel);
+        ConcreteObserverB largeKeyDisplay = new ConcreteObserverB(largDisplayJLabel);
 
-        Publisher publisher = new Publisher();
-        publisher.addObserver(logKey);
-        publisher.addObserver(largeKeyDisplay);
+        Subject publisher = new Subject();
+        publisher.attach(logKey);
+        publisher.attach(largeKeyDisplay);
 
-        KeyPressHandler keyPressHandler = new KeyPressHandler(publisher);
+        ConcreteSubject keyPressHandler = new ConcreteSubject(publisher);
 
         this.add(largDisplayJLabel);
         this.add(logKeyJLabel);

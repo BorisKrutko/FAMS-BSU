@@ -3,14 +3,14 @@ package LW11p;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Publisher {
+public class Subject {
     private List<Observer> observers = new ArrayList<>();
 
-    public void addObserver(Observer observer) {
+    public void attach(Observer observer) {
         observers.add(observer);
     } 
 
-    public void removeObserver(Observer observer) {
+    public void detach(Observer observer) {
         observers.removeIf(el -> el.equals(observer));
     } 
 

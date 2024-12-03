@@ -2,10 +2,10 @@ package LW11p;
 
 import javax.swing.JLabel;
 
-public class LargeKeyDisplay implements Observer {
+public class ConcreteObserverB implements Observer {
     private JLabel label;
 
-    public LargeKeyDisplay(JLabel label) {
+    public ConcreteObserverB(JLabel label) {
         this.label = label;
     }
 
