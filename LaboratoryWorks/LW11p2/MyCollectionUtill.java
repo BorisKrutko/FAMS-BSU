@@ -5,3 +5,4 @@ public interface MyCollectionUtill {
     public String mapToStringAtRate(int rate);
     public String listToString();
 }
+
