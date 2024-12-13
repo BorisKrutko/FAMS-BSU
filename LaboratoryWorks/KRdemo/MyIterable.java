@@ -1,5 +1,5 @@
 package KRdemo;
 
 public interface MyIterable<T> {
-    public MyIterator<T> iterator();
+    public MyIterator<T> cteateIterator();
 }

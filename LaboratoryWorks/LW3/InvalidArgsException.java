@@ -1,4 +1,4 @@
-package j_projects;
+package LW3;
 
 
 public class InvalidArgsException extends Exception {
