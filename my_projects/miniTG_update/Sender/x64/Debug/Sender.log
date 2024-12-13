@@ -1,0 +1,3 @@
+﻿  Sender.cpp
+C:\BORIS\c_projects\miniTG_update\Sender\Sender.cpp(44,55): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data
+  Sender.vcxproj -> C:\BORIS\c_projects\miniTG_update\x64\Debug\Sender.exe

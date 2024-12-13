@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OS_miniTG", "OS_miniTG\OS_miniTG.vcxproj", "{76A4CABA-293D-4878-BD94-DDEAB748345A}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DLL", "DLL\DLL.vcxproj", "{431A7CE1-83EF-4B18-ACB2-2CEFE6D85EFA}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sender", "Sender\Sender.vcxproj", "{292E027B-38DF-4B29-8499-B06CD883DFCF}"
@@ -19,14 +17,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{76A4CABA-293D-4878-BD94-DDEAB748345A}.Debug|x64.ActiveCfg = Debug|x64
-		{76A4CABA-293D-4878-BD94-DDEAB748345A}.Debug|x64.Build.0 = Debug|x64
-		{76A4CABA-293D-4878-BD94-DDEAB748345A}.Debug|x86.ActiveCfg = Debug|Win32
-		{76A4CABA-293D-4878-BD94-DDEAB748345A}.Debug|x86.Build.0 = Debug|Win32
-		{76A4CABA-293D-4878-BD94-DDEAB748345A}.Release|x64.ActiveCfg = Release|x64
-		{76A4CABA-293D-4878-BD94-DDEAB748345A}.Release|x64.Build.0 = Release|x64
-		{76A4CABA-293D-4878-BD94-DDEAB748345A}.Release|x86.ActiveCfg = Release|Win32
-		{76A4CABA-293D-4878-BD94-DDEAB748345A}.Release|x86.Build.0 = Release|Win32
 		{431A7CE1-83EF-4B18-ACB2-2CEFE6D85EFA}.Debug|x64.ActiveCfg = Debug|x64
 		{431A7CE1-83EF-4B18-ACB2-2CEFE6D85EFA}.Debug|x64.Build.0 = Debug|x64
 		{431A7CE1-83EF-4B18-ACB2-2CEFE6D85EFA}.Debug|x86.ActiveCfg = Debug|Win32
