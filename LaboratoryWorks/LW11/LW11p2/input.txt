@@ -1,5 +1,0 @@
-1344 Boris 2 2
-3456 Vlad 2 2
-1111 Den 2 2
-4624 Andrey 2 2 
-0000 Blat 1 1
