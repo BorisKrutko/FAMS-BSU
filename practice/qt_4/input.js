@@ -1,3 +1,0 @@
-ction func() {
-
-}
