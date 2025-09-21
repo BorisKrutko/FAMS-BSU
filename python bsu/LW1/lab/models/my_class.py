@@ -1,6 +1,6 @@
-from LW1.models.student import Student
+from lab.models.student import Student
 
-class School():
+class Class():
     def __init__(self, students: list[Student]) -> None:
         self.students = students
 
@@ -35,14 +35,16 @@ class School():
             case "id":
                 return sorted(self.students, key=lambda s: s.id)
             case "average_mark":
-                return sorted(self.students, key=lambda s: s.average_mark(), reverse=True)                 
+                return sorted(self.students, key=lambda s: (s.average_mark(), s.fio), reverse=True)                 
             case "fio":
                 return sorted(self.students, key=lambda s: s.fio)
             case _:
                 raise ValueError(f"it`s not avaliable key to sort students") 
                     
     def get_top_n_students(self, n: int) -> list[Student]:
-        return sorted(self.students, key=lambda s: s.average_mark(), reverse=True)[:n]
+        if n <= 0 or n > len(self.students):
+            raise ValueError(f"n must be between 1 and the number of students ({len(self.students)})")
+        return sorted(self.students, key=lambda s: (s.average_mark(), s.fio), reverse=True)[:n]
     
     def get_filter_students(self, key: str, value: str) -> list[Student]:
         match key:
