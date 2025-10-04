@@ -38,7 +38,6 @@ class LUMatrixProcessor:
                 L[j, i] = U[j, i] / U[i, i]
                 U[j, i:] = U[j, i:] - L[j, i] * U[i, i:]
 
-
         return L, U, p
     
 
@@ -46,8 +45,8 @@ class LUMatrixProcessor:
         L, U, p = self.lu_decomposition(in_filename)
 
         b_permuted = self.b.flatten()[p]
-        y = np.linalg.solve(L, b_permuted)
-        x = np.linalg.solve(U, y)
+        y = self._solve_triangular(L, b_permuted, False)
+        x = self._solve_triangular(U, y, True)
 
         self.file_manager.write(out_filename, L=L, U=U, p=p, x=x)
             
@@ -62,5 +61,22 @@ class LUMatrixProcessor:
                 max_el = new_max
 
         return imax
+
+
+    def _solve_triangular(self, U: np.ndarray, y: np.ndarray, is_upper_tr: bool) -> np.ndarray:
+        size_A = len(U)
+        x = np.zeros(size_A)
+
+        if is_upper_tr:
+            # обратный ход 
+            for j in range(size_A - 1, -1, -1):
+                x[j] = (y[j] - np.dot(U[j], x)) / U[j, j]
+        else:
+            # прямой ход 
+            for j in range(size_A):
+                x[j] = (y[j] - np.dot(U[j], x)) / U[j, j]
+
+        return x
+
 
 
