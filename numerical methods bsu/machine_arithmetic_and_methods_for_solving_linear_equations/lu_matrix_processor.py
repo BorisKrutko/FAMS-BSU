@@ -15,9 +15,14 @@ class LUMatrixProcessor:
         self.A = np.array([])
         self.b = np.array([])
 
+    def set_matrix(self, A: np.ndarray, b: np.ndarray):
+        self.A = A.astype(float)
+        self.b = b.astype(float)
 
-    def lu_decomposition(self, filename: str) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-        self.A, self.b = self.file_manager.read(filename)
+    def lu_decomposition(self, filename=None) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+        if filename:
+            self.A, self.b = self.file_manager.read(filename)
+
         size_A = len(self.A)
         
         U = np.array(self.A, dtype=float)
@@ -40,7 +45,6 @@ class LUMatrixProcessor:
 
         return L, U, p
     
-
     def linalg_solve(self, in_filename, out_filename):
         L, U, p = self.lu_decomposition(in_filename)
 
@@ -49,7 +53,17 @@ class LUMatrixProcessor:
         x = self._solve_triangular(U, y, True)
 
         self.file_manager.write(out_filename, L=L, U=U, p=p, x=x)
-            
+
+    def _solve_system(self, L, U, p):
+        b_permuted = self.b.flatten()[p]
+        y = self._solve_triangular(L, b_permuted, False)
+        x = self._solve_triangular(U, y, True)
+        return x
+    
+    def solve_and_return_x(self):
+        L, U, p = self.lu_decomposition()
+        x = self._solve_system(L, U, p)
+        return x            
     
     def _find_ind_max_el(self, k: int, size_A: int, U: np.ndarray):
         max_el = abs(U[k, k])
@@ -61,7 +75,6 @@ class LUMatrixProcessor:
                 max_el = new_max
 
         return imax
-
 
     def _solve_triangular(self, U: np.ndarray, y: np.ndarray, is_upper_tr: bool) -> np.ndarray:
         size_A = len(U)

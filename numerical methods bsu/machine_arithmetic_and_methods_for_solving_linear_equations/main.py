@@ -3,11 +3,11 @@ from lu_matrix_processor import LUMatrixProcessor
 import numpy as np
 
 
-max_n = 8000         
-repeats = 3          
+max_n = 4000         
+repeats = 1          
 times = np.zeros(max_n) 
 
-for n in range(3600, 3601):
+for n in range(0, 100000000000, 250):
     A = np.random.rand(n, n)
     b = np.random.rand(n)
 
@@ -28,6 +28,9 @@ for n in range(3600, 3601):
 
     avg_time = np.mean(run_times)
     times[n - 1] = avg_time
+
+    if avg_time > 60:
+        break
 
     print(f"Размерность: {n}, среднее время: {avg_time:.6f} сек")
     np.savetxt("data/times.txt", times, fmt="%.8f")
