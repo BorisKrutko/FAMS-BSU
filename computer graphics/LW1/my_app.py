@@ -39,12 +39,10 @@ class ColorConverterApp(tk.Tk):
         self.update_from_rgb() 
 
     def _create_widgets(self):
-        """интерфейс приложения"""
-
         color_preview_frame = ttk.Frame(self, padding=10)
         color_preview_frame.pack(pady=10, padx=10, fill=tk.X)
 
-        self.color_preview = tk.Label(color_preview_frame, text="Цвет", height=50, relief="raised", borderwidth=2)
+        self.color_preview = tk.Label(color_preview_frame, text="Цвет", height=15, relief="raised", borderwidth=2)
         self.color_preview.pack(fill=tk.BOTH, expand=True)
 
         ttk.Button(
@@ -78,14 +76,10 @@ class ColorConverterApp(tk.Tk):
         self._create_slider_entry(hls_frame, "S (Saturation)", self.s_var, 0, 100, self.update_from_hls)
     
     def _create_model_frame(self, parent, text):
-        """Создает рамку (Labelframe)"""
         frame = ttk.Labelframe(parent, text=text, padding=10)
         return frame
 
     def _create_slider_entry(self, parent, label, var, from_, to, update_cmd):
-        """
-        Создает пару виджетов: слайдер и поле для ввода, связанных одной переменной.
-        """
         frame = ttk.Frame(parent)
         frame.pack(pady=5, fill=tk.X)
         
@@ -112,7 +106,7 @@ class ColorConverterApp(tk.Tk):
         if self._is_updating: return
         try:
             r, g, b = cmyk_to_rgb(self.c_var.get(), self.m_var.get(), self.y_var.get(), self.k_var.get())
-            self.update_all_models(r, g, b)
+            self.update_all_models(r, g, b, source_model='cmyk')
         except (ValueError, tk.TclError):
             pass
 
@@ -120,7 +114,7 @@ class ColorConverterApp(tk.Tk):
         if self._is_updating: return
         try:
             r, g, b = self.r_var.get(), self.g_var.get(), self.b_var.get()
-            self.update_all_models(r, g, b)
+            self.update_all_models(r, g, b, source_model='rgb')
         except (ValueError, tk.TclError):
             pass
 
@@ -128,28 +122,31 @@ class ColorConverterApp(tk.Tk):
         if self._is_updating: return
         try:
             r, g, b = hls_to_rgb(self.h_var.get(), self.l_var.get(), self.s_var.get())
-            self.update_all_models(r, g, b)
+            self.update_all_models(r, g, b, source_model='hls')
         except (ValueError, tk.TclError):
             pass
-            
-    def update_all_models(self, r, g, b):
+   
+    def update_all_models(self, r, g, b, source_model=None):
         self._is_updating = True 
         
         c, m, y, k = rgb_to_cmyk(r, g, b)
         h, l, s = rgb_to_hls(r, g, b)
         
-        self.r_var.set(r)
-        self.g_var.set(g)
-        self.b_var.set(b)
+        if source_model != 'rgb':
+            self.r_var.set(r)
+            self.g_var.set(g)
+            self.b_var.set(b)
         
-        self.c_var.set(c)
-        self.m_var.set(m)
-        self.y_var.set(y)
-        self.k_var.set(k)
+        if source_model != 'cmyk':
+            self.c_var.set(c)
+            self.m_var.set(m)
+            self.y_var.set(y)
+            self.k_var.set(k)
         
-        self.h_var.set(h)
-        self.l_var.set(l)
-        self.s_var.set(s)
+        if source_model != 'hls':
+            self.h_var.set(h)
+            self.l_var.set(l)
+            self.s_var.set(s)
         
         hex_color = f"#{r:02x}{g:02x}{b:02x}"
         self.color_preview.config(background=hex_color)
@@ -157,8 +154,7 @@ class ColorConverterApp(tk.Tk):
         self._is_updating = False
 
     def pick_color(self):
-        """стандартный диалог выбора цвета."""
         color = colorchooser.askcolor()
         if color and color[0]:
             r, g, b = map(int, color[0])
-            self.update_all_models(r, g, b)
+            self.update_all_models(r, g, b, source_model='rgb')
